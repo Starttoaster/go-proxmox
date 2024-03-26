@@ -1,4 +1,5 @@
 name: Test/Lint/Fmt/Vet
+
 on:
   pull_request:
 
@@ -15,7 +16,13 @@ jobs:
         run: go build -o /dev/null ./...
 
       - name: Test
-        run: go test ./...
+        run: go test ./... -coverprofile=coverage.txt -covermode=atomic
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Starttoaster/go-proxmox
 
       - name: Check gofmt changes
         run: |
