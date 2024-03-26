@@ -1,5 +1,7 @@
 # go-proxmox
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/starttoaster/go-proxmox)](https://goreportcard.com/report/github.com/starttoaster/go-proxmox)
+
 This is an API client library for Proxmox VE servers. It aims to be simple to use and consume in your own Go programs, make very little assumptions about how the user would consume it, and use as few non-stdlib dependencies to do so as possible.
 
 This is currently tested against Proxmox VE 8.1.4 systems.
