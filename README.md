@@ -2,7 +2,9 @@
 
 This is an API client library for Proxmox VE servers. It aims to be simple to use and consume in your own Go programs, make very little assumptions about how the user would consume it, and use as few non-stdlib dependencies to do so as possible.
 
-This library is in its early development phase. Minor changes may be made in its usage, and only a portion of API methods are currently supported. Stand by for contributing guidelines for assisting with adding new endpoints, but the ones that exist have likely been added on a need to have basis at the moment.
+This is currently tested against Proxmox VE 8.1.4 systems.
+
+This library is in its early development phase. Minor changes may be made in its usage, and only a portion of API methods are currently supported. See the CONTRIBUTING.md for details on contributing new methods to this library. Or make an Issue to discuss it.
 
 ## Usage
 
