@@ -1,21 +1,33 @@
 name: Test/Lint/Fmt/Vet
+
 on:
+  push:
+    branches:
+      - main
   pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     container: golang:1
-    env:
-      GOFLAGS: "-buildvcs=false"
     steps:
+      - name: Mark workspace safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - uses: actions/checkout@v4
 
       - name: Build
         run: go build -o /dev/null ./...
 
       - name: Test
-        run: go test ./...
+        run: go test ./... -coverprofile=coverage.txt -covermode=atomic
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Starttoaster/go-proxmox
+          files: ./coverage.txt
 
       - name: Check gofmt changes
         run: |
