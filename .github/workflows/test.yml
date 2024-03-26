@@ -7,9 +7,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container: golang:1
-    env:
-      GOFLAGS: "-buildvcs=false"
     steps:
+      - name: Mark workspace safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - uses: actions/checkout@v4
 
       - name: Build
