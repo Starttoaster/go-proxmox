@@ -23,6 +23,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Starttoaster/go-proxmox
+          files: ./coverage.txt
 
       - name: Check gofmt changes
         run: |
