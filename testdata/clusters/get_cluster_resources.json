@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "cpu": 0.00215395696684676,
+      "disk": 0,
+      "diskread": 1899047936,
+      "diskwrite": 2697581568,
+      "id": "qemu/101",
+      "maxcpu": 4,
+      "maxdisk": 549755813888,
+      "maxmem": 17179869184,
+      "mem": 3865654169,
+      "name": "my-vm",
+      "netin": 554461212,
+      "netout": 13830445,
+      "node": "node1",
+      "status": "running",
+      "template": 0,
+      "type": "qemu",
+      "uptime": 234806,
+      "vmid": 101
+    },
+    {
+      "cgroup-mode": 2,
+      "cpu": 0.0496424063946151,
+      "disk": 5996113920,
+      "id": "node/node1",
+      "level": "",
+      "maxcpu": 16,
+      "maxdisk": 100861726720,
+      "maxmem": 134850514944,
+      "mem": 64139268096,
+      "node": "node1",
+      "status": "online",
+      "type": "node",
+      "uptime": 234832
+    },
+    {
+      "content": "iso,backup,vztmpl",
+      "disk": 5996113920,
+      "id": "storage/node1/local",
+      "maxdisk": 100861726720,
+      "node": "node1",
+      "plugintype": "dir",
+      "shared": 0,
+      "status": "available",
+      "storage": "local",
+      "type": "storage"
+    },
+    {
+      "id": "sdn/node1/localnetwork",
+      "node": "node1",
+      "sdn": "localnetwork",
+      "status": "ok",
+      "type": "sdn"
+    }
+  ]
+}
