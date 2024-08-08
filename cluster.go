@@ -51,32 +51,32 @@ type GetClusterResourcesResponse struct {
 
 // GetClusterResourcesData contains data of a cluster's resources from GetClusterResources
 type GetClusterResourcesData struct {
-	ID         string   `json:"id"`
-	Node       string   `json:"node"`
-	Status     string   `json:"status"`
-	Type       string   `json:"type"`
-	CPU        *float64 `json:"cpu"`
-	Disk       *int     `json:"disk"`
-	DiskRead   *int     `json:"diskread"`
-	DiskWrite  *int     `json:"diskwrite"`
-	MaxCPU     *int     `json:"maxcpu"`
-	MaxDisk    *int     `json:"maxdisk"`
-	MaxMem     *int     `json:"maxmem"`
-	Mem        *int     `json:"mem"`
-	Name       *string  `json:"name"`
-	NetIn      *int     `json:"netin"`
-	NetOut     *int     `json:"netout"`
-	Template   *int     `json:"template"`
-	Uptime     *int     `json:"uptime"`
-	VMID       *int     `json:"vmid"`
-	HAState    *string  `json:"hastate"`
-	CgroupMode *int     `json:"cgroup-mode"`
-	Level      *string  `json:"level"`
-	Content    *string  `json:"content"`
-	PluginType *string  `json:"plugintype"`
-	Shared     *int     `json:"shared"`
-	Storage    *string  `json:"storage"`
-	SDN        *string  `json:"sdn"`
+	ID         string       `json:"id"`
+	Node       string       `json:"node"`
+	Status     string       `json:"status"`
+	Type       string       `json:"type"`
+	CPU        *float64     `json:"cpu"`
+	Disk       *int         `json:"disk"`
+	DiskRead   *int         `json:"diskread"`
+	DiskWrite  *int         `json:"diskwrite"`
+	MaxCPU     *int         `json:"maxcpu"`
+	MaxDisk    *int         `json:"maxdisk"`
+	MaxMem     *int         `json:"maxmem"`
+	Mem        *int         `json:"mem"`
+	Name       *string      `json:"name"`
+	NetIn      *int         `json:"netin"`
+	NetOut     *int         `json:"netout"`
+	Template   *int         `json:"template"`
+	Uptime     *int         `json:"uptime"`
+	VMID       *IntOrString `json:"vmid"`
+	HAState    *string      `json:"hastate"`
+	CgroupMode *int         `json:"cgroup-mode"`
+	Level      *string      `json:"level"`
+	Content    *string      `json:"content"`
+	PluginType *string      `json:"plugintype"`
+	Shared     *int         `json:"shared"`
+	Storage    *string      `json:"storage"`
+	SDN        *string      `json:"sdn"`
 }
 
 // GetClusterResources makes a GET request to the /cluster/resources endpoint
