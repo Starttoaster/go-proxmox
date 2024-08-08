@@ -20,6 +20,10 @@ func testFloat64(f float64) *float64 {
 	return &f
 }
 
+func testIntOrString(is IntOrString) *IntOrString {
+	return &is
+}
+
 func TestGetClusterResources(t *testing.T) {
 	mux, server, client := setup(t)
 	defer teardown(server)
@@ -53,7 +57,7 @@ func TestGetClusterResources(t *testing.T) {
 				Template:  testInt(0),
 				Type:      "qemu",
 				Uptime:    testInt(234806),
-				VMID:      testInt(101),
+				VMID:      testIntOrString("101"),
 			},
 			{
 				CgroupMode: testInt(2),

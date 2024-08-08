@@ -1,0 +1,23 @@
+{
+  "data":[
+    {
+      "status":"stopped",
+      "maxdisk":8589934592,
+      "maxswap":536870912,
+      "swap":0,
+      "netin":0,
+      "cpu":0,
+      "cpus":1,
+      "type":"lxc",
+      "maxmem":536870912,
+      "name":"CT103",
+      "disk":0,
+      "diskwrite":0,
+      "vmid":103,
+      "uptime":0,
+      "diskread":0,
+      "netout":0,
+      "mem":0
+    }
+  ]
+}

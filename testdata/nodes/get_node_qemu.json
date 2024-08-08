@@ -1,0 +1,21 @@
+{
+  "data":[
+    {
+      "status":"running",
+      "cpus":5,
+      "netout":200064110,
+      "name":"test",
+      "vmid":104,
+      "netin":294680188,
+      "mem":3072665958,
+      "pid":1551,
+      "uptime":28661,
+      "maxdisk":274877906944,
+      "diskwrite":0,
+      "diskread":0,
+      "disk":0,
+      "cpu":0.0156071608339279,
+      "maxmem":8589934592
+    }
+  ]
+}

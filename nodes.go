@@ -26,7 +26,7 @@ type GetNodesData struct {
 	MaxMem         int     `json:"maxmem"`
 	Mem            int     `json:"mem"`
 	Node           string  `json:"node"`
-	SslFingerprint string  `json:"ssl_fingerprint"`
+	SSLFingerprint string  `json:"ssl_fingerprint"`
 	Status         string  `json:"status"`
 	Type           string  `json:"type"`
 	Uptime         int     `json:"uptime"`
@@ -62,12 +62,12 @@ type GetNodeStatusData struct {
 	CPUInfo       CPUInfo       `json:"cpuinfo"`
 	CurrentKernel CurrentKernel `json:"current-kernel"`
 	Idle          int           `json:"idle"`
-	Ksm           Ksm           `json:"ksm"`
+	KSM           KSM           `json:"ksm"`
 	Kversion      string        `json:"kversion"`
 	LoadAvg       []string      `json:"loadavg"`
 	Memory        Memory        `json:"memory"`
 	PveVersion    string        `json:"pveversion"`
-	RootFs        RootFs        `json:"rootfs"`
+	RootFs        RootFS        `json:"rootfs"`
 	Swap          Swap          `json:"swap"`
 	Uptime        int           `json:"uptime"`
 	Wait          float64       `json:"wait"`
@@ -129,21 +129,21 @@ type GetNodeQemuResponse struct {
 
 // GetNodeQemuData contains data of one VM from a GetNodeQemu response
 type GetNodeQemuData struct {
-	CPU       float64 `json:"cpu"`
-	Cpus      int     `json:"cpus"`
-	Disk      int     `json:"disk"`
-	DiskRead  int     `json:"diskread"`
-	DiskWrite int     `json:"diskwrite"`
-	MaxDisk   int     `json:"maxdisk"`
-	MaxMem    int     `json:"maxmem"`
-	Mem       int     `json:"mem"`
-	Name      string  `json:"name"`
-	NetIn     int     `json:"netin"`
-	NetOut    int     `json:"netout"`
-	Pid       int     `json:"pid"`
-	Status    string  `json:"status"`
-	Uptime    int     `json:"uptime"`
-	VMID      int     `json:"vmid"`
+	CPU       float64     `json:"cpu"`
+	CPUs      int         `json:"cpus"`
+	Disk      int         `json:"disk"`
+	DiskRead  int         `json:"diskread"`
+	DiskWrite int         `json:"diskwrite"`
+	MaxDisk   int         `json:"maxdisk"`
+	MaxMem    int         `json:"maxmem"`
+	Mem       int         `json:"mem"`
+	Name      string      `json:"name"`
+	NetIn     int         `json:"netin"`
+	NetOut    int         `json:"netout"`
+	PID       int         `json:"pid"`
+	Status    string      `json:"status"`
+	Uptime    int         `json:"uptime"`
+	VMID      IntOrString `json:"vmid"`
 }
 
 // GetNodeQemu makes a GET request to the /nodes/{node}/qemu endpoint
@@ -171,22 +171,22 @@ type GetNodeLxcResponse struct {
 
 // GetNodeLxcData contains data of one VM from a GetNodeLxc response
 type GetNodeLxcData struct {
-	CPU       float64 `json:"cpu"`
-	Cpus      int     `json:"cpus"`
-	Disk      int     `json:"disk"`
-	DiskRead  int     `json:"diskread"`
-	DiskWrite int     `json:"diskwrite"`
-	MaxDisk   int     `json:"maxdisk"`
-	MaxMem    int     `json:"maxmem"`
-	MaxSwap   int     `json:"maxswap"`
-	Mem       int     `json:"mem"`
-	Name      string  `json:"name"`
-	NetIn     int     `json:"netin"`
-	NetOut    int     `json:"netout"`
-	Status    string  `json:"status"`
-	Type      string  `json:"type"`
-	Uptime    int     `json:"uptime"`
-	VMID      string  `json:"vmid"`
+	CPU       float64     `json:"cpu"`
+	CPUs      int         `json:"cpus"`
+	Disk      int         `json:"disk"`
+	DiskRead  int         `json:"diskread"`
+	DiskWrite int         `json:"diskwrite"`
+	MaxDisk   int         `json:"maxdisk"`
+	MaxMem    int         `json:"maxmem"`
+	MaxSwap   int         `json:"maxswap"`
+	Mem       int         `json:"mem"`
+	Name      string      `json:"name"`
+	NetIn     int         `json:"netin"`
+	NetOut    int         `json:"netout"`
+	Status    string      `json:"status"`
+	Type      string      `json:"type"`
+	Uptime    int         `json:"uptime"`
+	VMID      IntOrString `json:"vmid"`
 }
 
 // GetNodeLxc makes a GET request to the /nodes/{node}/lxc endpoint
@@ -260,7 +260,7 @@ type GetNodeCertificatesInfoData struct {
 	Issuer        string   `json:"issuer"`
 	NotAfter      int      `json:"notafter"`
 	NotBefore     int      `json:"notbefore"`
-	Pem           string   `json:"pem"`
+	PEM           string   `json:"pem"`
 	PublicKeyBits int      `json:"public-key-bits"`
 	PublicKeyType string   `json:"public-key-type"`
 	San           []string `json:"san"`
