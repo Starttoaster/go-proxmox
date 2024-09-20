@@ -214,20 +214,20 @@ type GetNodeDisksListResponse struct {
 
 // GetNodeDisksListData contains data of disks from a GetNodeDisksList response
 type GetNodeDisksListData struct {
-	ByIDLink     string      `json:"by_id_link"`
-	DevPath      string      `json:"devpath"`
-	GPT          int         `json:"gpt"`
-	Health       string      `json:"health"`
-	Model        string      `json:"model"`
-	RPM          IntOrString `json:"rpm"`
-	Serial       string      `json:"serial"`
-	Size         int         `json:"size"`
-	Type         string      `json:"type"`
-	Used         string      `json:"used"`
-	Vendor       string      `json:"vendor"`
-	WWN          string      `json:"wwn"`
-	Bluestore    int         `json:"bluestore,omitempty"`
-	OSDEncrypted int         `json:"osdencrypted,omitempty"`
+	ByIDLink     string `json:"by_id_link"`
+	DevPath      string `json:"devpath"`
+	GPT          int    `json:"gpt"`
+	Health       string `json:"health"`
+	Model        string `json:"model"`
+	RPM          int    `json:"rpm"`
+	Serial       string `json:"serial"`
+	Size         int    `json:"size"`
+	Type         string `json:"type"`
+	Used         string `json:"used"`
+	Vendor       string `json:"vendor"`
+	WWN          string `json:"wwn"`
+	Bluestore    int    `json:"bluestore,omitempty"`
+	OSDEncrypted int    `json:"osdencrypted,omitempty"`
 }
 
 // GetNodeDisksList makes a GET request to the /nodes/{node}/disks/list endpoint
