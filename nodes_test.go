@@ -106,6 +106,24 @@ func TestGetNodeLxc(t *testing.T) {
 				Uptime:    0,
 				VMID:      IntOrString("103"),
 			},
+			{
+				CPU:       0,
+				CPUs:      1,
+				Disk:      0,
+				DiskRead:  0,
+				DiskWrite: 0,
+				MaxDisk:   8589934592,
+				MaxMem:    536870912,
+				MaxSwap:   536870912,
+				Mem:       0,
+				Name:      "CT104",
+				NetIn:     0,
+				NetOut:    0,
+				Status:    "stopped",
+				Type:      "lxc",
+				Uptime:    0,
+				VMID:      IntOrString("104"),
+			},
 		},
 	}
 
@@ -151,6 +169,107 @@ func TestGetNodeQemu(t *testing.T) {
 	}
 
 	r, resp, err := client.Nodes.GetNodeQemu("srv1")
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.Equal(t, want, *r)
+}
+
+func TestGetNodeDisksList(t *testing.T) {
+	mux, server, client := setup(t)
+	defer teardown(server)
+
+	mux.HandleFunc("/api2/json/nodes/srv1/disks/list", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, err := fmt.Fprint(w, fixture("nodes/get_node_disks_list.json"))
+		if err != nil {
+			return
+		}
+	})
+
+	want := GetNodeDisksListResponse{
+		Data: []GetNodeDisksListData{
+			{
+				DevPath:  "/dev/nvme0n1",
+				WWN:      "testwwn",
+				Serial:   "testser",
+				ByIDLink: "/dev/disk/by-id/nvme-drive",
+				Size:     512110190592,
+				Used:     "BIOS boot",
+				RPM:      IntOrString("0"),
+				Wearout:  IntOrString("99"),
+				GPT:      1,
+				Health:   "PASSED",
+				Model:    "Test Model",
+				Vendor:   "unknown",
+				Type:     "nvme",
+			},
+			{
+				Serial:       "testser",
+				ByIDLink:     "/dev/disk/by-id/ata-TOSHIBA_THNS",
+				Bluestore:    1,
+				DevPath:      "/dev/sda",
+				OSDEncrypted: 0,
+				Type:         "ssd",
+				Health:       "PASSED",
+				RPM:          IntOrString("0"),
+				Wearout:      IntOrString("N/A"),
+				GPT:          0,
+				Vendor:       "unknown",
+				Size:         1920383410176,
+				Model:        "Test Model",
+				WWN:          "testwwn",
+				Used:         "LVM",
+			},
+			{
+				DevPath:  "/dev/sda",
+				WWN:      "testwwn",
+				Serial:   "testser",
+				ByIDLink: "/dev/disk/by-id/ata-ST2000",
+				Size:     2000398934016,
+				Used:     "LVM",
+				RPM:      IntOrString("5400"),
+				Wearout:  IntOrString("N/A"),
+				GPT:      0,
+				Health:   "PASSED",
+				Model:    "Test Model",
+				Vendor:   "unknown",
+				Type:     "hdd",
+			},
+			{
+				DevPath:  "/dev/sdc",
+				WWN:      "testwwn",
+				Serial:   "testser",
+				ByIDLink: "/dev/disk/by-id/ata-WDC_DRIVE2",
+				Size:     5000947302400,
+				Used:     "ext4",
+				RPM:      IntOrString("4800"),
+				Wearout:  IntOrString("N/A"),
+				GPT:      0,
+				Health:   "PASSED",
+				Model:    "Test Model",
+				Vendor:   "unknown",
+				Type:     "hdd",
+			},
+			{
+				DevPath:  "/dev/sde",
+				WWN:      "testwwn",
+				Serial:   "testser",
+				ByIDLink: "/dev/disk/by-id/ata-WDC_DRIVE1",
+				Size:     5000947302400,
+				Used:     "ZFS",
+				RPM:      IntOrString("4800"),
+				Wearout:  IntOrString("N/A"),
+				GPT:      0,
+				Health:   "PASSED",
+				Model:    "Test Model",
+				Vendor:   "unknown",
+				Type:     "hdd",
+			},
+		},
+	}
+
+	r, resp, err := client.Nodes.GetNodeDisksList("srv1")
 	require.NoError(t, err)
 	require.NotNil(t, resp)
 	require.Equal(t, want, *r)

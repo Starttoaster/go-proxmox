@@ -1,0 +1,93 @@
+{
+    "data": [
+      {
+        "devpath": "/dev/nvme0n1",
+        "wwn": "testwwn",
+        "serial": "testser",
+        "by_id_link": "/dev/disk/by-id/nvme-drive",
+        "size": 512110190592,
+        "used": "BIOS boot",
+        "osdid": -1,
+        "rpm": 0,
+        "wearout": 99,
+        "gpt": 1,
+        "osdid-list": null,
+        "health": "PASSED",
+        "model": "Test Model",
+        "vendor": "unknown",
+        "type": "nvme"
+      },
+      {
+        "serial": "testser",
+        "by_id_link": "/dev/disk/by-id/ata-TOSHIBA_THNS",
+        "bluestore": 1,
+        "devpath": "/dev/sda",
+        "osdencrypted": 0,
+        "type": "ssd",
+        "osdid-list":[
+           "1"
+        ],
+        "osdid": "1",
+        "health": "PASSED",
+        "rpm": 0,
+        "wearout": "N/A",
+        "gpt": 0,
+        "vendor": "unknown",
+        "size": 1920383410176,
+        "model": "Test Model",
+        "wwn": "testwwn",
+        "used": "LVM"
+      },
+      {
+        "osdid": -1,
+        "rpm": "5400",
+        "serial": "testser",
+        "by_id_link": "/dev/disk/by-id/ata-ST2000",
+        "size": 2000398934016,
+        "used": "LVM",
+        "devpath": "/dev/sda",
+        "wwn": "testwwn",
+        "type": "hdd",
+        "vendor": "unknown",
+        "health": "PASSED",
+        "model": "Test Model",
+        "gpt": 0,
+        "osdid-list": null,
+        "wearout": "N/A"
+      },
+      {
+        "rpm": "4800",
+        "osdid": -1,
+        "by_id_link": "/dev/disk/by-id/ata-WDC_DRIVE2",
+        "size": 5000947302400,
+        "used": "ext4",
+        "serial": "testser",
+        "wwn": "testwwn",
+        "devpath": "/dev/sdc",
+        "type": "hdd",
+        "vendor": "unknown",
+        "model": "Test Model",
+        "health": "PASSED",
+        "osdid-list": null,
+        "gpt": 0,
+        "wearout": "N/A"
+      },
+      {
+        "size": 5000947302400,
+        "used": "ZFS",
+        "by_id_link": "/dev/disk/by-id/ata-WDC_DRIVE1",
+        "serial": "testser",
+        "rpm": "4800",
+        "osdid": -1,
+        "wwn": "testwwn",
+        "devpath": "/dev/sde",
+        "model": "Test Model",
+        "health": "PASSED",
+        "type": "hdd",
+        "vendor": "unknown",
+        "wearout": "N/A",
+        "osdid-list": null,
+        "gpt": 0
+      }
+    ]
+}

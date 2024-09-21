@@ -69,7 +69,7 @@ func (is *IntOrString) UnmarshalJSON(data []byte) error {
 	// attempt to unmarshal into an integer
 	var i int
 	var intErr error
-	if intErr = json.Unmarshal(data, &i); intErr == nil && i != 0 {
+	if intErr = json.Unmarshal(data, &i); intErr == nil {
 		*is = IntOrString(strconv.Itoa(i))
 		return nil
 	}
@@ -77,7 +77,7 @@ func (is *IntOrString) UnmarshalJSON(data []byte) error {
 	// attempt to unmarshal into a string
 	var str string
 	var strErr error
-	if strErr = json.Unmarshal(data, &str); strErr == nil && str != "" {
+	if strErr = json.Unmarshal(data, &str); strErr == nil {
 		*is = IntOrString(str)
 		return nil
 	}
