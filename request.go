@@ -2,6 +2,7 @@ package proxmox
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -69,7 +70,7 @@ func (c *Client) Do(req *http.Request, v interface{}) (*http.Response, error) {
 			return nil, fmt.Errorf("error reading Proxmox response body: %v", err)
 		}
 
-		return resp, fmt.Errorf(string(body))
+		return resp, errors.New(string(body))
 	}
 
 	// Copy body into v
