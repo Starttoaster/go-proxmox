@@ -24,6 +24,33 @@ func testIntOrString(is IntOrString) *IntOrString {
 	return &is
 }
 
+func TestGetClusterCephStatus(t *testing.T) {
+	mux, server, client := setup(t)
+	defer teardown(server)
+
+	mux.HandleFunc("/api2/json/cluster/ceph/status", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, err := fmt.Fprint(w, fixture("clusters/get_cluster_ceph_status.json"))
+		if err != nil {
+			return
+		}
+	})
+
+	want := GetClusterCephStatusResponse{
+		Data: GetClusterCephStatusData{
+			Health: CephHealthStatus{
+				Status: "HEALTH_OK",
+			},
+		},
+	}
+
+	r, resp, err := client.Cluster.GetClusterCephStatus()
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.Equal(t, want, *r)
+}
+
 func TestGetClusterResources(t *testing.T) {
 	mux, server, client := setup(t)
 	defer teardown(server)
@@ -97,6 +124,67 @@ func TestGetClusterResources(t *testing.T) {
 	}
 
 	r, resp, err := client.Cluster.GetClusterResources()
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.Equal(t, want, *r)
+}
+
+func TestGetClusterStatus(t *testing.T) {
+	mux, server, client := setup(t)
+	defer teardown(server)
+
+	mux.HandleFunc("/api2/json/cluster/status", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, err := fmt.Fprint(w, fixture("clusters/get_cluster_status.json"))
+		if err != nil {
+			return
+		}
+	})
+
+	want := GetClusterStatusResponse{
+		Data: []GetClusterStatusData{
+			{
+				Type:    "cluster",
+				ID:      "cluster",
+				Version: testInt(5),
+				Quorate: testInt(1),
+				Name:    "prd",
+			},
+			{
+				NodeID: testInt(2),
+				Type:   "node",
+				IP:     testStr("10.0.1.2"),
+				Name:   "cmp2",
+				Level:  testStr(""),
+				Online: testInt(1),
+				ID:     "node/cmp2",
+				Local:  testInt(0),
+			},
+			{
+				NodeID: testInt(4),
+				Type:   "node",
+				IP:     testStr("10.0.1.3"),
+				Name:   "cmp3",
+				Level:  testStr(""),
+				Online: testInt(1),
+				ID:     "node/cmp3",
+				Local:  testInt(0),
+			},
+			{
+				NodeID: testInt(1),
+				Type:   "node",
+				IP:     testStr("10.0.1.1"),
+				Name:   "cmp1",
+				Level:  testStr(""),
+				Online: testInt(1),
+				ID:     "node/cmp1",
+				Local:  testInt(1),
+			},
+		},
+	}
+
+	r, resp, err := client.Cluster.GetClusterStatus()
 	require.NoError(t, err)
 	require.NotNil(t, resp)
 	require.Equal(t, want, *r)

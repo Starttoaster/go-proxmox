@@ -96,3 +96,31 @@ func (s *ClusterService) GetClusterResources() (*GetClusterResourcesResponse, *h
 
 	return d, resp, nil
 }
+
+// GetClusterCephStatusResponse contains the response for the /cluster/ceph/status endpoint
+type GetClusterCephStatusResponse struct {
+	Data GetClusterCephStatusData `json:"data"`
+}
+
+// GetClusterCephStatusData contains data of a ceph cluster's status from GetClusterCephStatus
+type GetClusterCephStatusData struct {
+	Health CephHealthStatus `json:"health"`
+}
+
+// GetClusterCephStatus makes a GET request to the /cluster/resources endpoint
+// https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/resources
+func (s *ClusterService) GetClusterCephStatus() (*GetClusterCephStatusResponse, *http.Response, error) {
+	u := "cluster/ceph/status"
+	req, err := s.client.NewRequest(http.MethodGet, u, nil)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	d := new(GetClusterCephStatusResponse)
+	resp, err := s.client.Do(req, d)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return d, resp, nil
+}
