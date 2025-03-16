@@ -59,6 +59,11 @@ type Swap struct {
 	Used  int `json:"used"`
 }
 
+// CephHealthStatus status of ceph health
+type CephHealthStatus struct {
+	Status string `json:"status"`
+}
+
 // IntOrString is an alias for some returns from the Proxmox API where we've identified that some versions return a string, and others return an integer
 // For example, LXC VMIDs were a string return in PVE 8.1.x, and are an integer in 8.2.x
 // Since it can be either depending on the version of Proxmox queried, we're going to return the looser type. String in this case.
