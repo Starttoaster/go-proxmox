@@ -4,7 +4,7 @@
 
 This is an API client library for Proxmox VE servers. It aims to be simple to use and consume in your own Go programs, make very little assumptions about how the user would consume it, and use as few non-stdlib dependencies to do so as possible.
 
-This is currently tested against Proxmox VE 8.1.4 systems.
+This is currently tested against Proxmox VE 8.x systems.
 
 This library is in its early development phase. Minor changes may be made in its usage, and only a portion of API methods are currently supported. See the CONTRIBUTING.md for details on contributing new methods to this library. Or make an Issue to discuss it.
 
@@ -36,7 +36,7 @@ If your PVE server's TLS can't be verified, you can pass an insecure HTTP client
 httpClient := http.Client{
 	Transport: &http.Transport{
 		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: tlsVerify,
+			InsecureSkipVerify: true,
 		},
 	},
 }
