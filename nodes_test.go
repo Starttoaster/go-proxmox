@@ -105,6 +105,7 @@ func TestGetNodeLxc(t *testing.T) {
 				Type:      "lxc",
 				Uptime:    0,
 				VMID:      IntOrString("103"),
+				Tags:      "tag3;tag4",
 			},
 			{
 				CPU:       0,
@@ -164,6 +165,7 @@ func TestGetNodeQemu(t *testing.T) {
 				Status:    "running",
 				Uptime:    28661,
 				VMID:      IntOrString("104"),
+				Tags:      "tag1;tag2",
 			},
 		},
 	}

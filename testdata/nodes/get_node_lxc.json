@@ -17,7 +17,8 @@
       "uptime":0,
       "diskread":0,
       "netout":0,
-      "mem":0
+      "mem":0,
+      "tags": "tag3;tag4"
     },
     {
       "status":"stopped",

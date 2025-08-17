@@ -144,6 +144,7 @@ type GetNodeQemuData struct {
 	Status    string      `json:"status"`
 	Uptime    int         `json:"uptime"`
 	VMID      IntOrString `json:"vmid"`
+	Tags      string      `json:"tags"`
 }
 
 // GetNodeQemu makes a GET request to the /nodes/{node}/qemu endpoint
@@ -187,6 +188,7 @@ type GetNodeLxcData struct {
 	Type      string      `json:"type"`
 	Uptime    int         `json:"uptime"`
 	VMID      IntOrString `json:"vmid"`
+	Tags      string      `json:"tags"`
 }
 
 // GetNodeLxc makes a GET request to the /nodes/{node}/lxc endpoint
