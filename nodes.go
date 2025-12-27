@@ -324,3 +324,70 @@ func (s *NodeService) GetNodeStorage(name string) (*GetNodeStorageResponse, *htt
 
 	return d, resp, nil
 }
+
+// GetQemuSnapshotsResponse contains the response for the /nodes/{node}/qemu/{vmid}/snapshot endpoint
+type GetQemuSnapshotsResponse struct {
+	Data []GetQemuSnapshotsData `json:"data"`
+}
+
+// GetQemuSnapshotsData contains data of snapshots from a GetQemuSnapshots response
+type GetQemuSnapshotsData struct {
+	Description string  `json:"description"`
+	Name        string  `json:"name"`
+	Running     *int    `json:"running,omitempty"`
+	Digest      *string `json:"digest,omitempty"`
+	Parent      *string `json:"parent,omitempty"`   // Parent snapshot identifier
+	SnapTime    *int    `json:"snaptime,omitempty"` // Snapshot creation time
+	VMState     *bool   `json:"vmstate,omitempty"`  // Snapshot includes RAM
+}
+
+// GetQemuSnapshots makes a GET request to the /nodes/{node}/qemu/{vmid}/snapshot endpoint
+// https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/qemu/{vmid}/snapshot
+func (s *NodeService) GetQemuSnapshots(nodeName string, vmID int) (*GetQemuSnapshotsResponse, *http.Response, error) {
+	u := fmt.Sprintf("nodes/%s/qemu/%d/snapshot", nodeName, vmID)
+	req, err := s.client.NewRequest(http.MethodGet, u, nil)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	d := new(GetQemuSnapshotsResponse)
+	resp, err := s.client.Do(req, d)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return d, resp, nil
+}
+
+// GetLxcSnapshotsResponse contains the response for the /nodes/{node}/lxc/{vmid}/snapshot endpoint
+type GetLxcSnapshotsResponse struct {
+	Data []GetLxcSnapshotsData `json:"data"`
+}
+
+// GetLxcSnapshotsData contains data of snapshots from a GetLxcSnapshots response
+type GetLxcSnapshotsData struct {
+	Description string  `json:"description"`
+	Name        string  `json:"name"`
+	Running     *int    `json:"running,omitempty"`
+	Digest      *string `json:"digest,omitempty"`
+	Parent      *string `json:"parent,omitempty"`   // Parent snapshot identifier
+	SnapTime    *int    `json:"snaptime,omitempty"` // Snapshot creation time
+}
+
+// GetLxcSnapshots makes a GET request to the /nodes/{node}/lxc/{vmid}/snapshot endpoint
+// https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/snapshot
+func (s *NodeService) GetLxcSnapshots(nodeName string, vmID int) (*GetLxcSnapshotsResponse, *http.Response, error) {
+	u := fmt.Sprintf("nodes/%s/lxc/%d/snapshot", nodeName, vmID)
+	req, err := s.client.NewRequest(http.MethodGet, u, nil)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	d := new(GetLxcSnapshotsResponse)
+	resp, err := s.client.Do(req, d)
+	if err != nil {
+		return nil, resp, err
+	}
+
+	return d, resp, nil
+}

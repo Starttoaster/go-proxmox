@@ -276,3 +276,81 @@ func TestGetNodeDisksList(t *testing.T) {
 	require.NotNil(t, resp)
 	require.Equal(t, want, *r)
 }
+
+func TestGetQemuSnapshots(t *testing.T) {
+	mux, server, client := setup(t)
+	defer teardown(server)
+
+	mux.HandleFunc("/api2/json/nodes/srv1/qemu/101/snapshot", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, err := fmt.Fprint(w, fixture("nodes/get_qemu_snapshots.json"))
+		if err != nil {
+			return
+		}
+	})
+
+	want := GetQemuSnapshotsResponse{
+		Data: []GetQemuSnapshotsData{
+			{
+				Running:     testInt(1),
+				Name:        "current",
+				Description: "You are here!",
+				Digest:      testStr("7f90a6337e201cc1ef443122387ba45e646a90fdc74"),
+			},
+		},
+	}
+
+	r, resp, err := client.Nodes.GetQemuSnapshots("srv1", 101)
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.Equal(t, want, *r)
+}
+
+func TestGetLxcSnapshots(t *testing.T) {
+	mux, server, client := setup(t)
+	defer teardown(server)
+
+	mux.HandleFunc("/api2/json/nodes/srv1/lxc/102/snapshot", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, err := fmt.Fprint(w, fixture("nodes/get_lxc_snapshots.json"))
+		if err != nil {
+			return
+		}
+	})
+
+	want := GetLxcSnapshotsResponse{
+		Data: []GetLxcSnapshotsData{
+			{
+				Name:        "test3",
+				Parent:      testStr("test2"),
+				SnapTime:    testInt(1766863487),
+				Description: "",
+			},
+			{
+				SnapTime:    testInt(1766863221),
+				Name:        "test",
+				Description: "",
+			},
+			{
+				SnapTime:    testInt(1766863440),
+				Name:        "test2",
+				Parent:      testStr("test"),
+				Description: "",
+			},
+			{
+				Running:     testInt(0),
+				Name:        "current",
+				Parent:      testStr("test3"),
+				Description: "You are here!",
+				Digest:      testStr("af2cfb3c95accc5f66601e0f964711fddc7f91ae"),
+			},
+		},
+	}
+
+	r, resp, err := client.Nodes.GetLxcSnapshots("srv1", 102)
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.Equal(t, want, *r)
+}
