@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "test3",
+      "parent": "test2",
+      "snaptime": 1766863487,
+      "description": ""
+    },
+    {
+      "snaptime": 1766863221,
+      "name": "test",
+      "description": ""
+    },
+    {
+      "snaptime": 1766863440,
+      "name": "test2",
+      "parent": "test",
+      "description": ""
+    },
+    {
+      "running": 0,
+      "name": "current",
+      "parent": "test3",
+      "description": "You are here!",
+      "digest": "af2cfb3c95accc5f66601e0f964711fddc7f91ae"
+    }
+  ]
+}
