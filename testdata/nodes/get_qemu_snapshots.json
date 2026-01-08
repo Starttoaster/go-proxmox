@@ -1,10 +1,24 @@
 {
   "data": [
     {
-      "running": 1,
+      "name": "wert",
+      "snaptime": 1766989405,
+      "parent": "test",
+      "description": "",
+      "vmstate": 1
+    },
+    {
+      "vmstate": 1,
+      "description": "",
+      "snaptime": 1766989144,
+      "name": "test"
+    },
+    {
+      "digest": "d260164505e0d8e447fe642218bee45ed5e625b6",
+      "parent": "wert",
       "name": "current",
-      "description": "You are here!",
-      "digest": "7f90a6337e201cc1ef443122387ba45e646a90fdc74"
+      "running": 1,
+      "description": "You are here!"
     }
   ]
 }
