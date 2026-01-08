@@ -338,7 +338,7 @@ type GetQemuSnapshotsData struct {
 	Digest      *string `json:"digest,omitempty"`
 	Parent      *string `json:"parent,omitempty"`   // Parent snapshot identifier
 	SnapTime    *int    `json:"snaptime,omitempty"` // Snapshot creation time
-	VMState     *bool   `json:"vmstate,omitempty"`  // Snapshot includes RAM
+	VMState     *int    `json:"vmstate,omitempty"`  // Snapshot includes RAM
 }
 
 // GetQemuSnapshots makes a GET request to the /nodes/{node}/qemu/{vmid}/snapshot endpoint

@@ -293,10 +293,24 @@ func TestGetQemuSnapshots(t *testing.T) {
 	want := GetQemuSnapshotsResponse{
 		Data: []GetQemuSnapshotsData{
 			{
-				Running:     testInt(1),
+				Name:        "wert",
+				SnapTime:    testInt(1766989405),
+				Parent:      testStr("test"),
+				Description: "",
+				VMState:     testInt(1),
+			},
+			{
+				VMState:     testInt(1),
+				Description: "",
+				SnapTime:    testInt(1766989144),
+				Name:        "test",
+			},
+			{
+				Digest:      testStr("d260164505e0d8e447fe642218bee45ed5e625b6"),
+				Parent:      testStr("wert"),
 				Name:        "current",
+				Running:     testInt(1),
 				Description: "You are here!",
-				Digest:      testStr("7f90a6337e201cc1ef443122387ba45e646a90fdc74"),
 			},
 		},
 	}
