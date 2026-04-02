@@ -69,6 +69,8 @@ type GetClusterResourcesData struct {
 	Template   *int         `json:"template"`
 	Uptime     *int         `json:"uptime"`
 	VMID       *IntOrString `json:"vmid"`
+	Tags       *string      `json:"tags"`
+	MemHost    *int         `json:"memhost"`
 	HAState    *string      `json:"hastate"`
 	CgroupMode *int         `json:"cgroup-mode"`
 	Level      *string      `json:"level"`
